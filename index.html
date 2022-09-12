@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>To-Do App By Adithya</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+
+    <div id="myDIV" class="header">
+        <h1>My To Do List</h2>
+ 
+        <form id="newItemForm">
+            <input type="text" placeholder="Add New Item" id="item">
+            <input type="submit" value="Add" id="addBtn">
+        </form>
+      </div>
+      
+      <ul id="myUL">
+        <li>Buy Textbooks</li>
+
+      </ul>
+
+
+    <script>
+        $(function(){
+
+            var $list, $newItemForm;            //Variable Declaration
+            
+            $list = $('ul');
+
+            $newItemForm = $('#newItemForm')
+
+            //Adding Item//
+            $newItemForm.on('submit', function(e){
+                e.preventDefault()
+                var text = $('input:text').val()
+                if(text != '')
+                {$list.append('<li>' + text + '</li>')
+                $('input:text').val()
+                return $('#item').val('');}else{window.alert("Kindly Add Item")}
+            })
+
+
+            //Removing Item//
+
+            $list.on('click','li', function(){
+                var $this = $(this)
+                $this.remove()
+            })
+
+
+        })
+
+    </script>
+</body>
+
+</html>
